@@ -1,0 +1,24 @@
+{
+    "viewTitles": {
+        "home": "T3Movies",
+        "adminMovies": "Administrar Peliculas"
+    },
+    "sidebar": {
+        "movies": "Peliculas",
+        "addMovie": "Agregar Pelicula",
+        "adminMovies": "Administrar Peliculas"
+    },
+    "auth": {
+        "logIn": "Iniciar Sesión",
+        "insertEmail": "Ingrese email",
+        "insertPass": "Ingrese contraseña"
+      },
+      "formLabels": {
+        "username": "Nombre de Usuario",
+        "password": "Contraseña "
+      },
+      "buttons": {
+        "login": "Iniciar Sesión",
+        "logout": "Cerrar Sesión"
+      }
+}
