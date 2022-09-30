@@ -3,7 +3,7 @@ import { Switch, BrowserRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
 // Contexts
-import { HeaderContextProvider } from './context/HeaderContext.jsx';
+import { CustomSelectContextProvider } from './context/CustomSelectContext.jsx';
 
 // Router
 import Routes from './routes/routes.jsx';
@@ -12,11 +12,11 @@ const App = () => {
   return (
     <>
       <BrowserRouter>
-      <HeaderContextProvider>
+      <CustomSelectContextProvider>
         <Switch>
           <Routes />
         </Switch>
-        </HeaderContextProvider>
+        </CustomSelectContextProvider>
       </BrowserRouter>
       <ToastContainer theme="colored" autoClose={5000} pauseOnFocusLoss pauseOnHover />
     </>

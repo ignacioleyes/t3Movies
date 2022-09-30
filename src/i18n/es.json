@@ -15,10 +15,34 @@
       },
       "formLabels": {
         "username": "Nombre de Usuario",
-        "password": "Contraseña "
+        "password": "Contraseña",
+        "movieTitle": "Título",
+        "genres": "Generos"
+      },
+      "placeHolders": {
+        "movieTitle": "Título de la película" 
       },
       "buttons": {
         "login": "Iniciar Sesión",
         "logout": "Cerrar Sesión"
+      },
+      "toast": {
+        "succes": {
+          "movieCrtd": "Pelicula creada con éxito"
+        },
+        "error": {
+          "credentials": "Credenciáles inválidas",
+          "getList": "Error al obtener los datos de las listas"
+        }
+      },
+      "customSelect": {
+        "event": "click",
+        "selection": "Seleccione",
+        "typeButton": "button",
+        "initialValue": "Activo",
+        "defaultValues": {
+          "unlikSourcesAndItems": "Desvincular Selección",
+          "selectAllOptiosn": "Todos"
+        }
       }
 }

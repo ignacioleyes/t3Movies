@@ -17,6 +17,7 @@ const Routes = () => {
 const AuthView = lazy(() => import('../views/authView/AuthView.jsx'));
 const HomeView = lazy(() => import('../views/homeView/HomeView.jsx'));
 const AdminMoviesView = lazy(() => import('../views/adminMovies/AdminMoviesView.jsx'))
+const AddMovieView = lazy(() => import('../views/addMovie/AddMovieView.jsx'))
 
 // ------------------------------------------- //
 // ----------------- Return ------------------ //
@@ -30,6 +31,7 @@ return(
         <Route path="/" exact component={() => <Redirect to={{ pathname: '/home' }} />} />
         <PrivateRoute pageName={esi18n.viewTitles.home} path="/home" component={HomeView} />
         <PrivateRoute pageName={esi18n.viewTitles.AdminMovies} path="/adminMovies" component={AdminMoviesView} />
+        <PrivateRoute pageName={esi18n.viewTitles.AdminMovies} path="/addMovie" component={AddMovieView} />
     </Switch>
     </Suspense>
 )

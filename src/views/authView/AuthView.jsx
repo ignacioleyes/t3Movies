@@ -37,7 +37,7 @@ const AuthView = () => {
           history.push('/home');
         }
       } catch (error) {
-        toast.error('Credenciáles inválidas');
+        toast.error(esi18n.toast.error.credentials);
       }
     }
   };
