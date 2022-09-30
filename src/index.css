@@ -24,16 +24,16 @@ code {
   --sidebar-submenu: rgb(211, 84, 0);
   --sidebar-hover: #da722c;
   --form-btn-auth: #dd6b20;
-  --header-grey: #565a5c;
+  --primary-gray: #565a5c;
+  --auth-gray: #565a5c;
   --white-1: #eee;
-  --white-2: #ddd;
+  --white-snow: #FFFAFA;
   --white: #ffffff;
   --grey: #c4c4c4;
   --form-label: #252525;
   --form-label-grey: #91979f;
   --form-btn-cancel: #6b7c82;
   --form-btn-excel: #5fa6ad;
-  --auth-grey: #565a5c;
   --auth-black: rgba(0, 0, 0, 0.04);
   --filter-container: #f5f5f5;
   --alert-cancel-btn: #f1f1f1;
@@ -121,3 +121,44 @@ code {
   line-height: 24px;
 }
 /*------------------------------------------------*/
+
+/* ERROR TOAST */
+.Toastify__toast--error {
+  border-radius: 6px !important;
+  background: #ffe4e3 !important;
+}
+
+.Toastify__toast--error div {
+  color: #b03d40;
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 500;
+}
+
+.Toastify__toast--error::before {
+  content: url('../src/assets/svg/error-toast.svg');
+  position: relative;
+  z-index: 100000;
+  left: 5px;
+  top: 14px;
+}
+
+.Toastify__progress-bar-theme--colored {
+  height: 6px;
+}
+.Toastify__progress-bar-theme--colored.Toastify__progress-bar--error {
+  background: #b03d40 !important;
+}
+
+.Toastify__toast-icon {
+  display: none !important;
+}
+
+.Toastify__toast > button > svg {
+  display: none;
+}
+
+.Toastify__toast-container {
+  width: 445px !important;
+  height: 64px !important;
+  border-radius: 10px !important;
+}

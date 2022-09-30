@@ -1,3 +1,4 @@
+import Cookies from 'js-cookie';
 import React, {useEffect} from 'react';
 import { ProSidebar, Menu, MenuItem, SubMenu, SidebarHeader, SidebarFooter, SidebarContent } from 'react-pro-sidebar';
 import { useHistory } from 'react-router-dom';
@@ -16,6 +17,9 @@ import esi18n from '../../i18n/es.json';
 
 const Sidebar = ({ collapsed, rtl, toggled, handleToggleSidebar, handleCollapsedChange }) => {
   const history = useHistory();
+  JSON.parse(Cookies.get('auth'));
+
+
 
 
   // ------------------------------------------- //
@@ -46,7 +50,7 @@ const Sidebar = ({ collapsed, rtl, toggled, handleToggleSidebar, handleCollapsed
   };
 
   const logoutHandler = () => {
-    // Cookies.remove('auth');
+    Cookies.remove('auth');
     history.push('/auth');
   };
 
