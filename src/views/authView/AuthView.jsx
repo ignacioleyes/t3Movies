@@ -25,8 +25,9 @@ const AuthView = () => {
 
   const onSubmitHandler = async () => {
     if (!emailRef.current.value.trim().length !== 0 && !passwordRef.current.value.trim().length !== 0) {
+      let response;
       try {
-        const response = await Promise.resolve(
+        response = await Promise.resolve(
           loginService({ email: emailRef.current.value.trim(), password: passwordRef.current.value.trim() })
         );
         if (response) {
@@ -38,6 +39,7 @@ const AuthView = () => {
         }
       } catch (error) {
         toast.error(esi18n.toast.error.credentials);
+        console.log(response);
       }
     }
   };

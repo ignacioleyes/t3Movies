@@ -17,18 +17,29 @@
         "username": "Nombre de Usuario",
         "password": "Contraseña",
         "movieTitle": "Título",
-        "genres": "Generos"
+        "genres": "Generos",
+        "actors": "Actores",
+        "releaseDate": "Fecha de estreno",
+        "moviePoster": "Poster"
       },
       "placeHolders": {
-        "movieTitle": "Título de la película" 
+        "movieTitle": "Título de la película",
+        "releaseDate": "Fecha de estreno"
       },
       "buttons": {
         "login": "Iniciar Sesión",
-        "logout": "Cerrar Sesión"
+        "logout": "Cerrar Sesión",
+        "save": "Guardar",
+        "cancel": "Cancelar"
+      },
+      "buttonTitles":{
+        "editMovie": "Editar Película",
+        "deleteMovie": "Eliminar Película"
       },
       "toast": {
         "succes": {
-          "movieCrtd": "Pelicula creada con éxito"
+          "movieCrtd": "Película creada con éxito",
+          "movieDeleted": "Película eliminada con éxito"
         },
         "error": {
           "credentials": "Credenciáles inválidas",

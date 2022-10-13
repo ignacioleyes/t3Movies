@@ -37,3 +37,12 @@ export const postMovie = (data) => {
   }
 }
 
+export const deleteMovie = (id) => {
+  try {
+    const response = Promise.resolve(clienteAxios.delete(`/peliculas/${id}`));
+    return response;
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
