@@ -1,10 +1,8 @@
-import clienteAxios from './Axios.jsx';
+import clienteAxios from "./Axios.jsx";
 
 export const getAllMovies = () => {
   try {
-    const response = Promise.resolve(
-      clienteAxios.get('/peliculas')
-    );
+    const response = Promise.resolve(clienteAxios.get("/peliculas"));
     return response;
   } catch (error) {
     throw new Error(error);
@@ -18,24 +16,22 @@ export const getMovieById = (id) => {
   } catch (error) {
     throw new Error(error);
   }
-}
+};
 
-export const postMovie = (data) => {
+export const postMovie = async (data) => {
   try {
-    const response = Promise.resolve(clienteAxios.post('/peliculas', {
-        titulo: data.titulo,
-        enCines: data.enCines,
-        fechaEstreno: data.fechaEstreno,
-        poster: data.poster,
-        generos: data.generos,
-        actores: data.actores
-      })
-    );
+    const formData = new FormData();
+    formData.append("titulo", data.titulo);
+    formData.append("fechaEstreno", data.fechaEstreno);
+    formData.append("poster", data.poster);
+    formData.append("genero", data.genero);
+    formData.append("actor", data.actor);
+    const response = await clienteAxios.post("/peliculas", formData);
     return response;
   } catch (error) {
     throw new Error(error);
   }
-}
+};
 
 export const deleteMovie = (id) => {
   try {
@@ -44,5 +40,4 @@ export const deleteMovie = (id) => {
   } catch (error) {
     throw new Error(error);
   }
-}
-
+};

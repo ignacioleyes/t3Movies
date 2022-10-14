@@ -1,14 +1,12 @@
-import React from 'react';
-
+import React from "react";
 
 // I18n
-import esi18n from '../../i18n/es.json';
+import esi18n from "../../i18n/es.json";
 
 // Styles
-import classes from './HomeView.module.css';
+import classes from "./HomeView.module.css";
 
 const HomeView = () => {
-
   // ------------------------------------------- //
   // ----------------- Return ------------------ //
   // ------------------------------------------- //

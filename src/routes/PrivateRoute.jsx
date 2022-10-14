@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { Route } from 'react-router-dom';
+import React, { useState } from "react";
+import { Route } from "react-router-dom";
 
 // Components
-import Header from '../components/header/Header.jsx';
-import Sidebar from '../components/sidebar/Sidebar.jsx';
+import Header from "../components/header/Header.jsx";
+import Sidebar from "../components/sidebar/Sidebar.jsx";
 
 // Styles
-import '../components/sidebar/Sidebar.scss';
+import "../components/sidebar/Sidebar.scss";
 
 const PrivateRoute = (props) => {
   const { component, path, pageName, hideHeader, hideSidebar } = props;

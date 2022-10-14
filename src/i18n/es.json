@@ -1,59 +1,59 @@
 {
-    "viewTitles": {
-        "home": "T3Movies",
-        "adminMovies": "Administrar Peliculas"
+  "viewTitles": {
+    "home": "T3Movies",
+    "adminMovies": "Administrar Peliculas"
+  },
+  "sidebar": {
+    "movies": "Peliculas",
+    "addMovie": "Agregar Pelicula",
+    "adminMovies": "Administrar Peliculas"
+  },
+  "auth": {
+    "logIn": "Iniciar Sesión",
+    "insertEmail": "Ingrese email",
+    "insertPass": "Ingrese contraseña"
+  },
+  "formLabels": {
+    "username": "Nombre de Usuario",
+    "password": "Contraseña",
+    "movieTitle": "Título",
+    "genres": "Generos",
+    "actors": "Actores",
+    "releaseDate": "Fecha de estreno",
+    "moviePoster": "Poster"
+  },
+  "placeHolders": {
+    "movieTitle": "Título de la película",
+    "releaseDate": "Fecha de estreno"
+  },
+  "buttons": {
+    "login": "Iniciar Sesión",
+    "logout": "Cerrar Sesión",
+    "save": "Guardar",
+    "cancel": "Cancelar"
+  },
+  "buttonTitles": {
+    "editMovie": "Editar Película",
+    "deleteMovie": "Eliminar Película"
+  },
+  "toast": {
+    "succes": {
+      "movieCrtd": "Película creada con éxito",
+      "movieDeleted": "Película eliminada con éxito"
     },
-    "sidebar": {
-        "movies": "Peliculas",
-        "addMovie": "Agregar Pelicula",
-        "adminMovies": "Administrar Peliculas"
-    },
-    "auth": {
-        "logIn": "Iniciar Sesión",
-        "insertEmail": "Ingrese email",
-        "insertPass": "Ingrese contraseña"
-      },
-      "formLabels": {
-        "username": "Nombre de Usuario",
-        "password": "Contraseña",
-        "movieTitle": "Título",
-        "genres": "Generos",
-        "actors": "Actores",
-        "releaseDate": "Fecha de estreno",
-        "moviePoster": "Poster"
-      },
-      "placeHolders": {
-        "movieTitle": "Título de la película",
-        "releaseDate": "Fecha de estreno"
-      },
-      "buttons": {
-        "login": "Iniciar Sesión",
-        "logout": "Cerrar Sesión",
-        "save": "Guardar",
-        "cancel": "Cancelar"
-      },
-      "buttonTitles":{
-        "editMovie": "Editar Película",
-        "deleteMovie": "Eliminar Película"
-      },
-      "toast": {
-        "succes": {
-          "movieCrtd": "Película creada con éxito",
-          "movieDeleted": "Película eliminada con éxito"
-        },
-        "error": {
-          "credentials": "Credenciáles inválidas",
-          "getList": "Error al obtener los datos de las listas"
-        }
-      },
-      "customSelect": {
-        "event": "click",
-        "selection": "Seleccione",
-        "typeButton": "button",
-        "initialValue": "Activo",
-        "defaultValues": {
-          "unlikSourcesAndItems": "Desvincular Selección",
-          "selectAllOptiosn": "Todos"
-        }
-      }
+    "error": {
+      "credentials": "Credenciáles inválidas",
+      "getList": "Error al obtener los datos de las listas"
+    }
+  },
+  "customSelect": {
+    "event": "click",
+    "selection": "Seleccione",
+    "typeButton": "button",
+    "initialValue": "Activo",
+    "defaultValues": {
+      "unlikSourcesAndItems": "Desvincular Selección",
+      "selectAllOptiosn": "Todos"
+    }
+  }
 }

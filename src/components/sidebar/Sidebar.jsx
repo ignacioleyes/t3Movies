@@ -1,33 +1,44 @@
-import Cookies from 'js-cookie';
-import React, {useEffect} from 'react';
-import { ProSidebar, Menu, MenuItem, SubMenu, SidebarHeader, SidebarFooter, SidebarContent } from 'react-pro-sidebar';
-import { useHistory } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import Cookies from "js-cookie";
+import React, { useEffect } from "react";
+import {
+  ProSidebar,
+  Menu,
+  MenuItem,
+  SubMenu,
+  SidebarHeader,
+  SidebarFooter,
+  SidebarContent,
+} from "react-pro-sidebar";
+import { useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
 
 // PackageJson
-import packageJson from '../../../package.json';
+import packageJson from "../../../package.json";
 
 // Assets
-import Movies from '../../assets/svg/movie.jsx';
-import Hamburguer from '../../assets/svg/hamburger.jsx';
-import Logout from '../../assets/svg/logout.jsx';
+import Movies from "../../assets/svg/movie.jsx";
+import Hamburguer from "../../assets/svg/hamburger.jsx";
+import Logout from "../../assets/svg/logout.jsx";
 
 // I18n
-import esi18n from '../../i18n/es.json';
+import esi18n from "../../i18n/es.json";
 
-const Sidebar = ({ collapsed, rtl, toggled, handleToggleSidebar, handleCollapsedChange }) => {
+const Sidebar = ({
+  collapsed,
+  rtl,
+  toggled,
+  handleToggleSidebar,
+  handleCollapsedChange,
+}) => {
   const history = useHistory();
-  JSON.parse(Cookies.get('auth'));
-
-
-
+  JSON.parse(Cookies.get("auth"));
 
   // ------------------------------------------- //
   // ---------- Side Effects Handlers ---------- //
   // ------------------------------------------- //
 
   useEffect(() => {
-    window.addEventListener('resize', (window) => {
+    window.addEventListener("resize", (window) => {
       if (window.target.outerWidth < 1400) {
         handleCollapsedChange(true);
       }
@@ -50,8 +61,8 @@ const Sidebar = ({ collapsed, rtl, toggled, handleToggleSidebar, handleCollapsed
   };
 
   const logoutHandler = () => {
-    Cookies.remove('auth');
-    history.push('/auth');
+    Cookies.remove("auth");
+    history.push("/auth");
   };
 
   // ------------------------------------------- //
@@ -63,9 +74,13 @@ const Sidebar = ({ collapsed, rtl, toggled, handleToggleSidebar, handleCollapsed
       <SidebarContent>
         <Menu iconShape="circle">
           <SubMenu title={esi18n.sidebar.movies} icon={<Movies />}>
-            <MenuItem onClick={() => onChangeView('/addMovie')}>{esi18n.sidebar.addMovie}</MenuItem>
+            <MenuItem onClick={() => onChangeView("/addMovie")}>
+              {esi18n.sidebar.addMovie}
+            </MenuItem>
             <hr className="hr-sidebar" />
-            <MenuItem onClick={() => onChangeView('/adminMovies')}>{esi18n.sidebar.adminMovies}</MenuItem>
+            <MenuItem onClick={() => onChangeView("/adminMovies")}>
+              {esi18n.sidebar.adminMovies}
+            </MenuItem>
           </SubMenu>
         </Menu>
       </SidebarContent>
@@ -77,15 +92,26 @@ const Sidebar = ({ collapsed, rtl, toggled, handleToggleSidebar, handleCollapsed
   // ------------------------------------------- //
 
   return (
-    <ProSidebar rtl={rtl} collapsed={collapsed} toggled={toggled} breakPoint="md" onToggle={handleToggleSidebar}>
+    <ProSidebar
+      rtl={rtl}
+      collapsed={collapsed}
+      toggled={toggled}
+      breakPoint="md"
+      onToggle={handleToggleSidebar}
+    >
       <SidebarHeader>
         <div className="container">
           <div className="row col-xl-12 px-2 mt-3 mb-5">
             <div className="container text-nowrap">
-              <div className="row" onClick={() => handleCollapsedChange(!collapsed)}>
+              <div
+                className="row"
+                onClick={() => handleCollapsedChange(!collapsed)}
+              >
                 <div className="col-12 mt-2">
                   <Hamburguer marginBottom="11.5rem" />
-                  <label className="sidebar-title">{esi18n.sidebar.title}</label>
+                  <label className="sidebar-title">
+                    {esi18n.sidebar.title}
+                  </label>
                 </div>
               </div>
             </div>
@@ -101,7 +127,9 @@ const Sidebar = ({ collapsed, rtl, toggled, handleToggleSidebar, handleCollapsed
               <div className="row text-nowrap" onClick={logoutHandler}>
                 <div className="col-12">
                   <Logout />
-                  <label className="px-2 sidebar-user-label logout">{esi18n.sidebar.footerLogout}</label>
+                  <label className="px-2 sidebar-user-label logout">
+                    {esi18n.sidebar.footerLogout}
+                  </label>
                 </div>
               </div>
               <div className="row mt-1 text-end mb-3 sidebar-version">

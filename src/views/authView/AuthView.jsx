@@ -1,41 +1,46 @@
-import Cookies from 'js-cookie';
-import React, { useRef } from 'react';
-import Button from 'react-bootstrap/Button';
-import { useHistory } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import Cookies from "js-cookie";
+import React, { useRef } from "react";
+import Button from "react-bootstrap/Button";
+import { useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
 
 // I18n
-import esi18n from '../../i18n/es.json';
+import esi18n from "../../i18n/es.json";
 
 // Image
-import Image from '../../assets/image/best-movies.jpg';
+import Image from "../../assets/image/best-movies.jpg";
 
 // Services
-import loginService from '../../services/Auth';
+import loginService from "../../services/Auth";
 
 const AuthView = () => {
   const history = useHistory();
   const emailRef = useRef();
   const passwordRef = useRef();
 
-
   // ------------------------------------------------ //
   // ---------------- Action Handlers---------------- //
   // ------------------------------------------------ //
 
   const onSubmitHandler = async () => {
-    if (!emailRef.current.value.trim().length !== 0 && !passwordRef.current.value.trim().length !== 0) {
+    if (
+      !emailRef.current.value.trim().length !== 0 &&
+      !passwordRef.current.value.trim().length !== 0
+    ) {
       let response;
       try {
         response = await Promise.resolve(
-          loginService({ email: emailRef.current.value.trim(), password: passwordRef.current.value.trim() })
+          loginService({
+            email: emailRef.current.value.trim(),
+            password: passwordRef.current.value.trim(),
+          })
         );
         if (response) {
           const res = JSON.stringify({
             token: response.data.token,
           });
-          Cookies.set('auth', res);
-          history.push('/home');
+          Cookies.set("auth", res);
+          history.push("/home");
         }
       } catch (error) {
         toast.error(esi18n.toast.error.credentials);
@@ -52,15 +57,23 @@ const AuthView = () => {
     <div className="container-fluid">
       <div className="otherContainer row">
         <div className="col-7">
-        <div style={{ width: '100%', height: '100%', backgroundImage: `url(${Image})` }}></div>
+          <div
+            style={{
+              width: "100%",
+              height: "100%",
+              backgroundImage: `url(${Image})`,
+            }}
+          ></div>
         </div>
         <div className="authContainer col-md-5">
           <div className="d-flex justify-content-center">
-            <form className="mt-5" style={{ width: '70%' }}>
+            <form className="mt-5" style={{ width: "70%" }}>
               <div className=" authTitle mb-5">{esi18n.auth.logIn}</div>
               <div className="mb-5">
                 <div className="row">
-                  <label className="authLabel mt-5 mb-3">{esi18n.formLabels.username}</label>
+                  <label className="authLabel mt-5 mb-3">
+                    {esi18n.formLabels.username}
+                  </label>
                 </div>
                 <input
                   type="text"
@@ -83,7 +96,6 @@ const AuthView = () => {
                   ref={passwordRef}
                   className="form-control"
                 />
-              
               </div>
               <div className="row ">
                 <Button className="authBtn mt-5" onClick={onSubmitHandler}>

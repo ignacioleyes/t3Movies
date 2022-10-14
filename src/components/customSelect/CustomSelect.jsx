@@ -1,14 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState, useContext } from "react";
 
 // Context
-import { CustomSelectContext } from '../../context/CustomSelectContext.jsx';
+import { CustomSelectContext } from "../../context/CustomSelectContext.jsx";
 
 // I18n
-import esi18n from '../../i18n/es.json';
+import esi18n from "../../i18n/es.json";
 
 // Styles
-import classes from './CustomSelect.module.css';
+import classes from "./CustomSelect.module.css";
 
 const CustomSelect = React.forwardRef(
   ({
@@ -25,7 +25,7 @@ const CustomSelect = React.forwardRef(
     const [open, setOpen] = useState(false);
     const [myOptions, setMyOptions] = useState();
     const [selectionLabel, setSelectionLabel] = useState();
-    const [query, setQuery] = useState('');
+    const [query, setQuery] = useState("");
     const [differentStyle, setDifferentStyle] = useState(false);
     const { reset, setReset } = useContext(CustomSelectContext);
     const toggle = () => setOpen(!open);
@@ -41,9 +41,9 @@ const CustomSelect = React.forwardRef(
           setOpen(false);
         }
       };
-      document.addEventListener('click', checkIfClickedOutside);
+      document.addEventListener("click", checkIfClickedOutside);
       return () => {
-        document.removeEventListener('click', checkIfClickedOutside);
+        document.removeEventListener("click", checkIfClickedOutside);
       };
     }, [open]);
 
@@ -65,7 +65,7 @@ const CustomSelect = React.forwardRef(
       if (reset) {
         setSelectionLabel(`${esi18n.customSelect.selection}`);
         setReset(false);
-        setQuery('');
+        setQuery("");
       }
     }, [reset]);
 
@@ -102,7 +102,9 @@ const CustomSelect = React.forwardRef(
     const filter = () => {
       return myOptions.filter((option) => {
         if (option !== null) {
-          return option.name?.toLowerCase().indexOf(query.toLocaleLowerCase()) > -1;
+          return (
+            option.name?.toLowerCase().indexOf(query.toLocaleLowerCase()) > -1
+          );
         }
         return null;
       });
@@ -123,7 +125,9 @@ const CustomSelect = React.forwardRef(
         {myOptions && (
           <div className={classes.wrapper} id={id}>
             <div
-              className={!differentStyle ? classes.header : classes.headerDiffStyle}
+              className={
+                !differentStyle ? classes.header : classes.headerDiffStyle
+              }
               role={esi18n.customSelect.typeButton}
               onKeyPress={() => !disabled && toggle(!open)}
               onClick={() => !disabled && toggle(!open)}
@@ -133,26 +137,42 @@ const CustomSelect = React.forwardRef(
                 <input
                   type="text"
                   ref={ref}
-                  placeholder={selectionLabel || `${esi18n.customSelect.selection}`}
+                  placeholder={
+                    selectionLabel || `${esi18n.customSelect.selection}`
+                  }
                   value={selectionLabel || query}
                   onChange={(e) => {
                     setQuery(e.target.value);
-                    setSelectionLabel(e.target.value.length === 0 ? emptyInput : e.target.value);
+                    setSelectionLabel(
+                      e.target.value.length === 0 ? emptyInput : e.target.value
+                    );
                   }}
                   onClick={() => !disabled && toggle(!open)}
                 />
               </div>
               <div>
-                <span className={!open ? classes.arrowDown : classes.arrowDownOpen}>
+                <span
+                  className={!open ? classes.arrowDown : classes.arrowDownOpen}
+                >
                   <i className="bi bi-chevron-down" />
                 </span>
               </div>
             </div>
             {open && (
-              <div className={!differentStyle ? classes.listContainer : classes.listContainerDifStyle}>
+              <div
+                className={
+                  !differentStyle
+                    ? classes.listContainer
+                    : classes.listContainerDifStyle
+                }
+              >
                 <ul className={classes.list}>
                   {filter(myOptions).map((option) => (
-                    <li className={classes.listItem} onClick={() => handleSelected(option)} key={option.value}>
+                    <li
+                      className={classes.listItem}
+                      onClick={() => handleSelected(option)}
+                      key={option.value}
+                    >
                       <button
                         className={classes.button}
                         type={esi18n.customSelect.typeButton}

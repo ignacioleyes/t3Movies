@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 
 // Components
-import Spinner from 'react-bootstrap/Spinner';
+import Spinner from "react-bootstrap/Spinner";
 
 // Styles
-import classes from './Loading.module.css';
+import classes from "./Loading.module.css";
 
 const Loading = () => (
   <div className={classes.spinnerContainer}>
