@@ -1,7 +1,9 @@
 {
   "viewTitles": {
     "home": "T3Movies",
-    "adminMovies": "Administrar Peliculas"
+    "adminMovies": "Administrar Peliculas",
+    "addMovie": "Agregar Película",
+    "editMovie": "Editar Película"
   },
   "sidebar": {
     "movies": "Peliculas",

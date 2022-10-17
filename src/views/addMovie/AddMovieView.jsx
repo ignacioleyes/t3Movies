@@ -2,7 +2,7 @@
 // import Cookies from 'js-cookie';
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 
 // Components
@@ -12,7 +12,7 @@ import CustomSelect from "../../components/customSelect/CustomSelect.jsx";
 import esi18n from "../../i18n/es.json";
 
 // Services
-import { postMovie } from "../../services/Movies";
+import { getMovieById, postMovie } from "../../services/Movies";
 import { getAllGenres } from "../../services/Genres";
 import { getAllActors } from "../../services/Actors";
 
@@ -23,6 +23,7 @@ const AddMovie = () => {
   // const auth = JSON.parse(Cookies.get('auth'));
   // const token = auth.token;
   const history = useHistory();
+  const location = useLocation();
 
   // ---------------------------------------------------
   // --------------------- States ----------------------
@@ -30,7 +31,9 @@ const AddMovie = () => {
 
   const [genres, setGenres] = useState();
   const [actors, setActors] = useState();
-  // const[file, setFile] = useState();
+  const [isEdditing, setIsEdditing] = useState(false);
+  const [movie, setMovie] = useState();
+  const [title, setTitle] = useState();
 
   const {
     register,
@@ -79,6 +82,23 @@ const AddMovie = () => {
     }
   };
 
+  const handleData = async (id) => {
+    try {
+      const response = await getMovieById(id);
+      if (response) {
+        const theMovie = {
+          id: response.data.id,
+          titulo: response.data.titulo,
+          fechaEstreno: response.data.fechaEstreno,
+          poster: response.data.poster,
+          genero: response.data.genero,
+          actor: response.data.actor,
+        };
+        setMovie(theMovie);
+      }
+    } catch (error) {}
+  };
+
   const handleSelectedGenre = (e) => {
     setValue("genero", e);
   };
@@ -86,10 +106,6 @@ const AddMovie = () => {
   const handleSelectedActor = (e) => {
     setValue("actor", e);
   };
-
-  // const handleChange = (e) => {
-  //   const file = e.target.files[0];
-  // }
 
   const setLists = async () => {
     await handleGenres();
@@ -128,11 +144,25 @@ const AddMovie = () => {
     setLists();
   }, []);
 
+  useEffect(() => {
+    if (location.state) {
+      const id = location.state.id;
+      setIsEdditing(true);
+      handleData(id);
+    }
+  }, [location]);
+
+  useEffect(() => {
+    if (movie) {
+      reset(movie);
+    }
+  }, [movie]);
+
   return (
     <div className="container formContainer">
       <form className="formAdd" onSubmit={handleSubmit(onSubmit)}>
         <div>
-          <p className="formTitle">Crear Película</p>
+          <p className="formTitle">{title}</p>
         </div>
         <div className="row ms-4">
           <div className="col-xl-6">
@@ -161,44 +191,73 @@ const AddMovie = () => {
               </div>
             </div>
           </div>
-          <div className="col-xl-6">
-            <div className="container-fluid px-3">
-              <div className="row">
-                <div className="col-12 mb-2 mt-3">
-                  <label htmlFor="genresList" className="formLabel">
-                    {esi18n.formLabels.genres}
-                  </label>
-                </div>
-                <div className="col-12 mb-2 mt-3">
-                  <CustomSelect
-                    options={genres}
-                    setSelection={handleSelectedGenre}
-                    {...register("genero")}
-                  />
+          {!isEdditing && (
+            <div className="col-xl-6">
+              <div className="container-fluid px-3">
+                <div className="row">
+                  <div className="col-12 mb-2 mt-3">
+                    <label htmlFor="genresList" className="formLabel">
+                      {esi18n.formLabels.genres}
+                    </label>
+                  </div>
+                  <div className="col-12 mb-2 mt-3">
+                    <CustomSelect
+                      options={genres}
+                      setSelection={handleSelectedGenre}
+                      {...register("genero")}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          )}
+          {genres && movie && (
+            <div className="col-xl-6">
+              <div className="container-fluid px-3">
+                <div className="row">
+                  <div className="col-12 mb-2 mt-3">
+                    <label htmlFor="genresList" className="formLabel">
+                      {esi18n.formLabels.genres}
+                    </label>
+                  </div>
+                  <div className="col-12 mb-2 mt-3">
+                    <CustomSelect
+                      options={genres}
+                      setSelection={handleSelectedGenre}
+                      selected={
+                        genres.find((grs) => {
+                          return grs.value === movie.genero;
+                        })?.name
+                      }
+                      {...register("genero")}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
         <div className="row ms-4">
-          <div className="col-xl-6">
-            <div className="container-fluid px-3">
-              <div className="row">
-                <div className="col-12 mb-2 mt-3">
-                  <label htmlFor="genresList" className="formLabel">
-                    {esi18n.formLabels.actors}
-                  </label>
-                </div>
-                <div className="col-12 mb-2 mt-3">
-                  <CustomSelect
-                    options={actors}
-                    setSelection={handleSelectedActor}
-                    {...register("actor")}
-                  />
+          {!isEdditing && (
+            <div className="col-xl-6">
+              <div className="container-fluid px-3">
+                <div className="row">
+                  <div className="col-12 mb-2 mt-3">
+                    <label htmlFor="genresList" className="formLabel">
+                      {esi18n.formLabels.actors}
+                    </label>
+                  </div>
+                  <div className="col-12 mb-2 mt-3">
+                    <CustomSelect
+                      options={actors}
+                      setSelection={handleSelectedActor}
+                      {...register("actor")}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          )}
           <div className="col-xl-6">
             <div className="container-fluid px-3">
               <div className="row">
@@ -211,7 +270,6 @@ const AddMovie = () => {
                   <input
                     type="file"
                     name="poster"
-                    // onChange={handleChange}
                     placeholder={esi18n.placeHolders.movieTitle}
                     className={`formInput form-control ${
                       errors.titulo ? "is-invalid" : ""

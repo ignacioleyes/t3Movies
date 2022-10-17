@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { /* useHistory,  */ useLocation } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 
 // I18n
@@ -16,7 +16,7 @@ import { getAllMovies, deleteMovie } from "../../services/Movies";
 import classes from "./AdminMovies.module.css";
 
 const AdminMoviesView = () => {
-  // const history = useHistory();
+  const history = useHistory();
   const location = useLocation();
   const [data, setData] = useState();
 
@@ -47,6 +47,13 @@ const AdminMoviesView = () => {
     }
   };
 
+  const handleEditMovie = (id) => {
+    history.push({
+      pathname: "/addMovie",
+      state: { id },
+    });
+  };
+
   // ------------------------------------------- //
   // ---------- Side Effects Handlers ---------- //
   // ------------------------------------------- //
@@ -64,8 +71,8 @@ const AdminMoviesView = () => {
       <div className="row row-cols-1 row-cols-md-1 g-4">
         <div className="card-group">
           {data &&
-            data.map((movie, i) => (
-              <div className="col-3 mb-2 mt-1" key={i}>
+            data.map((movie) => (
+              <div className="col-3 mb-2 mt-1" key={movie.id}>
                 <div className="card h-100 ms-1 me-1">
                   <img
                     src={movie.poster}
@@ -89,6 +96,7 @@ const AdminMoviesView = () => {
                       <button
                         className="actionBtn"
                         title={esi18n.buttonTitles.editMovie}
+                        onClick={() => handleEditMovie(movie.id)}
                       >
                         {<UpdateMovie />}
                       </button>
